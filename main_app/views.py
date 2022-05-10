@@ -26,3 +26,11 @@ def watch_detail(request, watch_id):
 class WatchCreate(CreateView):
   model = Watch
   fields = '__all__'
+
+class WatchUpdate(UpdateView):
+  model = Watch
+  fields = '__all__'
+
+class WatchDelete(DeleteView):
+  model = Watch
+  success_url = '/watches/'
