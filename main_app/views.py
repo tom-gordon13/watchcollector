@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import CreateView, UpdateView, DeleteView
+
+from main_app.forms import ServicingForm
 
 from .models import Watch
 
@@ -17,9 +19,19 @@ def watch_index(request):
 
 def watch_detail(request, watch_id):
   watch = Watch.objects.get(pk=watch_id)
+  servicing_form = ServicingForm()
   return render(request, 'watches/detail.html', {
-    'watch': watch
+    'watch': watch,
+    'servicing_form': servicing_form
   })
+
+def add_servicing(request, watch_id):
+  form = ServicingForm(request.POST)
+  if form.is_valid():
+    new_servicing = form.save(commit=False)
+    new_servicing.watch_id = watch_id
+    new_servicing.save()
+  return redirect('detail', watch_id=watch_id)
 
 
 #Class-based View
