@@ -24,7 +24,7 @@ class Watch(models.Model):
 
 class Servicing(models.Model):
     watch = models.ForeignKey(Watch, on_delete=models.CASCADE)
-    date = models.DateField()
+    date = models.DateField('Servicing Date')
     cost = models.PositiveIntegerField()
     type = models.CharField(
         max_length=1,
@@ -34,4 +34,4 @@ class Servicing(models.Model):
 
 
     def __str__(self):
-        return f'{self.type} - ${self.cost}'
+        return f'{self.get_type_display()} - ${self.cost}'
