@@ -9,6 +9,10 @@
         <p>Vintage: {{watch.year}}</p>
         <p>Price: {{watch.price}}</p>
     </div>
+    <div class="card-action">
+        <a href="{% url 'watch_update' watch.id %}">Edit Watch Details</a>
+        <a href="{% url 'watch_delete' watch.id %}">Delete Watch</a>
+    </div>
 </div>
 
 {% endblock %}
