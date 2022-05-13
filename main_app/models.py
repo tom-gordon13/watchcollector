@@ -40,6 +40,8 @@ class Component(models.Model):
     def __str__(self):
         return f'{self.get_type_comp_display()}'
 
+    
+
  
 
 

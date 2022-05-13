@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Component Details</h1>
+
+<div class="row">
+  <div class="col s6 col-offset-3">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ component.get_type_comp_display }}</span>
+        <p>Type: {{ component.get_subtype_comp_display }}</p>
+      </div>
+      <div class="card-action">
+        <a href="{% url 'component_update' component.id %}">Edit</a>
+        <a href="{% url 'component_delete' component.id %}">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}

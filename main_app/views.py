@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 
 from main_app.forms import ServicingForm
 
@@ -36,7 +37,7 @@ def add_servicing(request, watch_id):
     new_servicing.save()
   return redirect('detail', watch_id=watch_id)
 
-def assoc_toy(request, watch_id, component_id):
+def assoc_comp(request, watch_id, component_id):
   Watch.objects.get(id=watch_id).components.add(component_id)
   return redirect('detail', watch_id=watch_id)
 
@@ -52,3 +53,23 @@ class WatchUpdate(UpdateView):
 class WatchDelete(DeleteView):
   model = Watch
   success_url = '/watches/'
+
+#Class-based Views for Component
+class ComponentList(ListView):
+  model = Component
+
+class ComponentDetail(DetailView):
+  model = Component
+
+class ComponentCreate(CreateView):
+  model = Component
+  fields = '__all__'
+  success_url = '/components/'
+
+class ComponentUpdate(UpdateView):
+  model = Component
+  fields = '__all__'
+
+class ComponentDelete(DeleteView):
+  model = Component
+  success_url = '/components/'
