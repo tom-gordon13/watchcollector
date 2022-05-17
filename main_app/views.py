@@ -48,7 +48,7 @@ class WatchCreate(CreateView):
 
 class WatchUpdate(UpdateView):
   model = Watch
-  fields = '__all__'
+  fields = ['make', 'model', 'year', 'price']
 
 class WatchDelete(DeleteView):
   model = Watch
