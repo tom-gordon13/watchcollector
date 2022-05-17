@@ -69,6 +69,7 @@ class ComponentCreate(CreateView):
 class ComponentUpdate(UpdateView):
   model = Component
   fields = '__all__'
+  success_url= '/components/'
 
 class ComponentDelete(DeleteView):
   model = Component
